@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="contact.css" />
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollSmoother.min.js"></script>
+
+  <script src="js/app.js" defer></script>
+  <script src="js/preloader.js" defer></script>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <nav class="navbar">
+         <div class="logo">
+  <img src="img/logo.png" alt="Sofiia" class="logo-img" />
+</div>
+    <ul class="nav-links">
+      <li><a   href="index.html">Home</a></li>
+      <li><a href="index.html#about">O mně</a></li>
+      <li><a href="index_prace.html">Práce</a></li>
+      <li><a class="active" href="contact.html"><button class="btn">Pojďme si promluvit</button></a></li>
+    </ul>
+  </nav>
+
+  <section id="contact" class="section fade-in">
+    <h2>Pojďme se spojit</h2>
+    <p class="motive-text">Máte nápad, projekt nebo otázku? Pošlete mi zprávu!</p>
+
+    <form action="https://formspree.io/f/mldbobva" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Vaše jméno (volitelné)" />
+      <input type="email" name="email" placeholder="Váš e-mail" required />
+      <textarea name="message" rows="5" placeholder="Napište svou zprávu..." required></textarea>
+      <button type="submit" class="btn">Odeslat zprávu</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Děkuji za návštěvu mého portfolia</p>
+    <p class="signature">Vytvořeno v kódu & chaosu 🕯</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.querySelector(".nav-menu-btn").addEventListener("click", function() {
+      document.querySelector(".nav-links").classList.toggle("active");
+    });
+gsap.registerPlugin(ScrollTrigger);
+
+
+gsap.utils.toArray(".section").forEach(section => {
+  gsap.from(section, {
+    scrollTrigger: {
+      trigger: section,
+      start: "top 85%", 
+      toggleActions: "play none none none"
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    ease: "power3.out"
+  });
+});
+
+gsap.from(".avatar-container", {
+  scrollTrigger: {
+    trigger: ".avatar-container",
+    start: "top 80%"
+  },
+  opacity: 0,
+  y: 30,
+  scale: 0.95,
+  duration: 1,
+  ease: "back.out(1.7)"
+});
+
+gsap.from(".glitch-title", {
+  y: -50,
+  opacity: 0,
+  duration: 1.2,
+  delay: 0.5,
+  ease: "power4.out"
+});
+
+gsap.from(".hero p", {
+  opacity: 0,
+  y: 20,
+  duration: 1,
+  delay: 0.5,
+  ease: "power2.out"
+});
+
+  </script>
+</body>
+</html>

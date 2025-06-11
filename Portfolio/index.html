@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio</title>
+
+  <link rel="stylesheet" href="main_home.css" />
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Roboto+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollSmoother.min.js"></script>
+
+  <script src="js/app.js" defer></script>
+  <script src="js/preloader.js" defer></script>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+
+
+</head>
+
+<body>
+  <div id="preloader"><div class="loader"></div></div>
+
+  <section class="parallax-section">
+    <div class="glass">
+      <header class="hero" id="home">
+        <nav class="navbar">
+        <div class="logo">
+  <img src="img/logo.png" alt="Sofiia" class="logo-img" />
+</div>
+
+          <ul class="nav-links">
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="index.html#about">O mně</a></li>
+            <li><a href="index_prace.html">Práce</a></li>
+            <li><a href="contact.html"><button class="btn">Pojďme si promluvit</button></a></li>
+          </ul>
+        </nav>
+        <div class="hero-content fade-in">
+          <h1 class="glitch-title">Web designér</h1>
+          <p>Ctižádostivý webdesignér, který se učí proměňovat nápady ve vizuální příběhy.</p>
+        </div>
+      </header>
+
+      <div class="divider"><span class="glyph">&#9762;</span></div>
+
+ <section id="about" class="section fade-in about-section">
+    <div class="about-grid">
+      <div class="avatar-container">
+        <img src="img/work/ja.png" alt="Avatar" class="avatar-img" />
+      </div>
+      <div class="about-text">
+        <h2>O mně</h2>
+        <p>
+          Jsem <span class="highlight">Sofiia</span>, jsem student střední školy a vášnivě se věnuji webdesignu a vývoji.
+          <span class="highlight">Teprve začínám, ale už se učím HTML, CSS a vyzkoušel jsem Figmu a Photoshop. Zatím se učím na jednoduchých projektech, ale přemýšlím o práci na reálných webových stránkách a zlepšování se.</span>
+          Učím se, experimentuji s designem a hledám svůj styl. Nyní se věnuji samostatnému vývoji a studiu ve škole, inspiraci hledám na internetu.
+        </p>
+      </div>
+    </div>
+  </section>
+
+      <section id="portfolio" class="section fade-in">
+        <h2>Vybraná práce</h2>
+          <div class="work-grid">
+    <div class="work-item">
+      <img src="img/Знімок екрана 2025-06-01 212506.png" alt="Projekt 1">
+    </div>
+    <div class="work-item">
+      <img src="img/Знімок екрана 2025-03-21 192918.png" alt="Projekt 2">
+    </div>
+    <div class="work-item">
+      <img src="img/Знімок екрана 2025-03-24 170846.png" alt="Projekt 3">
+    </div>
+    <div class="work-item">
+      <img src="img/Знімок екрана 2025-03-24 170920.png" alt="Projekt 4">
+    </div>
+  </div>
+        <p class="centered-text">Můj poslední projekt "Psichokids"</p>
+        <div class="work-item">
+          <p class="work-description">Tento projekt jsem vytvořila v rámci školního projektu. Cílem bylo vytvořit webovou stránku pro psychologickou poradnu.</p>
+      </section>
+
+      <section id="contact" class="section fade-in">
+        <h2>Pojďme se spojit</h2>
+        <p class="motive-text">Oslovte nás – pojďme společně něco vybudovat.</p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/qiskita" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://t.me/kittyhuity05" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a href="https://github.com/sofiia" target="_blank"><i class="fab fa-github"></i></a>
+          <p id="discord-link" style="cursor:pointer;"><i class="fab fa-discord"></i></p>
+        </div>
+      </section>
+
+      <div id="discord-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+          <p class="discord-username">kittyhuity05</p>
+          <button id="close-modal" aria-label="Zavřít">&times;</button>
+        </div>
+      </div>
+
+      <div id="image-modal" class="modal-overlay hidden">
+        <div class="modal-content image-modal-content">
+          <img id="modal-image" src="" alt="Zvětšený obrázek" />
+          <button id="close-image-modal" aria-label="Zavřít">&times;</button>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; <span id="year"></span> Děkuji za návštěvu mého portfolia</p>
+        <p class="signature">Vytvořeno v kódu 🕯</p>
+      </footer>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.getElementById("discord-link").addEventListener("click", () => {
+      document.getElementById("discord-modal").classList.remove("hidden");
+    });
+    document.getElementById("close-modal").addEventListener("click", () => {
+      document.getElementById("discord-modal").classList.add("hidden");
+    });
+
+
+    const modal = document.getElementById("image-modal");
+    const modalImage = document.getElementById("modal-image");
+    const closeImageModal = document.getElementById("close-image-modal");
+
+    document.querySelectorAll(".work-item img").forEach(img => {
+      img.addEventListener("click", () => {
+        modalImage.src = img.src;
+        modal.classList.remove("hidden");
+      });
+    });
+
+    closeImageModal.addEventListener("click", () => {
+      modal.classList.add("hidden");
+      modalImage.src = "";
+    });
+
+    window.addEventListener("load", () => {
+      document.getElementById("preloader").style.display = "none";
+    });
+
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 60) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".section").forEach(section => {
+  gsap.from(section, {
+    scrollTrigger: {
+      trigger: section,
+      start: "top 85%", 
+      toggleActions: "play none none none"
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    ease: "power3.out"
+  });
+});
+
+gsap.from(".glitch-title", {
+  y: -50,
+  opacity: 0,
+  duration: 1.2,
+  delay: 0.5,
+  ease: "power4.out"
+});
+
+
+gsap.from(".hero p", {
+  opacity: 0,
+  y: 20,
+  duration: 1,
+  delay: 0.8,
+  ease: "power2.out"
+});
+gsap.from(".avatar-container", {
+  scrollTrigger: {
+    trigger: ".avatar-container",
+    start: "top 80%"
+  },
+  opacity: 0,
+  y: 30,
+  scale: 0.95,
+  duration: 1,
+  ease: "back.out(1.7)"
+});
+
+  </script>
+  
+</body>
+</html>
